@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox Grid with Copy Button</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #1a5311; /* dark green outline */
+    border-radius: 10px;
+  }
+
+  .box {
+    flex: 0 0 calc(33.33% - 20px); /* 3 boxes per row with gap */
+    padding: 15px;
+    background-color: #e0f7d5; /* light green background */
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid #1a5311; /* dark green outline */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .button:hover {
+    background-color: #1a5311; /* dark green background on hover */
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid">
+  <!-- Each box represents a button with dynamic text -->
+  <div class="box">
+    <button class="button" onclick="copyToClipboard('Text 1')">Button 1</button>
+  </div>
+  <div class="box">
+    <button class="button" onclick="copyToClipboard('Text 2')">Button 2</button>
+  </div>
+  <div class="box">
+    <button class="button" onclick="copyToClipboard('Text 3')">Button 3</button>
+  </div>
+  <!-- Add more boxes/buttons as needed -->
+</div>
+
+<script>
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('Text copied to clipboard: ' + text);
+    })
+    .catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+}
+</script>
+
+</body>
+</html>
